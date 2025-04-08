@@ -23,9 +23,7 @@
   <!-- Header -->
   <nav id="navbar" class="navbar fixed-top navbar-expand-md grey lighten-5 z-depth-1 navbar-light">
     <div class="container-fluid p-0">
-      
-        <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Sangjae</span> Park</a>
-      
+      <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Sangjae</span> Park</a>
       <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,54 +32,24 @@
           <li class="nav-item ">
             <a class="nav-link" href="/">
               about
-              
             </a>
           </li>
-          
-            
-          
-            
-              <li class="nav-item ">
-                  <a class="nav-link" href="/cv/">
-                    cv
-                    
-                  </a>
-              </li>
-            
-          
-            
-          
-            
-              <li class="nav-item navbar-active font-weight-bold">
-                  <a class="nav-link" href="/projects/">
-                    projects
-                    
-                      <span class="sr-only">(current)</span>
-                    
-                  </a>
-              </li>
-            
-          
-            
-              <li class="nav-item ">
-                  <a class="nav-link" href="/publications/">
-                    publications
-                    
-                  </a>
-              </li>
-            
-          
-            
-              <li class="nav-item ">
-                  <a class="nav-link" href="/teaching/">
-                    teaching
-                    
-                  </a>
-              </li>
-            
-          
-            
-          
+          <li class="nav-item ">
+              <a class="nav-link" href="/cv/">
+                cv
+              </a>
+          </li>
+          <li class="nav-item navbar-active font-weight-bold">
+              <a class="nav-link" href="/projects/">
+                project/blog
+                <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/publications/">
+              publications
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -94,42 +62,64 @@
     </div>
   </progress>
 
-  <!-- Content -->
-  <div class="content">
-    
-  <h1>projects</h1>
-  <h6>some of the projects I have worked on</h6>
+  <!-- Project -->
+  <div class="content" style="border-bottom: 1px solid #ddd;">
+    <h1>Projects</h1>
+    <h6>Some of the projects I have worked on</h6>
+    <!-- TODO: FILL ME HERE -->
+  </div>
 
-
-<div id="projects" class="row mt-2 pt-3" style="overflow: visible !important;">
-  
-  
-    <div class="project-card">
-      
-        <a href="https://sangjae4309.github.io/docs-gem5/">
-      
-        <div class="card">
-          <img class="card-img-top" src="/assets/img/gem5Logo.gif" alt="gem5 logo" />
-          <div class="card-body">
-            <h5 class="card-title text-lowercase">gem5 documentation blog</h5>
-            <p class="card-text">Documented gem5 usages and issued encountered</p>
-            <div class="row ml-1 mr-1 p-0">
+  <!-- Blog -->
+  <div class="content" style="border-bottom: 1px solid #ddd;">
+    <h1>Blog</h1>
+    <h6>Some of blog posts I've recorded</h6>
+    <div id="projects" class="row mt-2 pt-3" style="overflow: visible !important; position: relative;">
+        <!-- gem5 -->
+        <div class="project-card", style="flex-wrap: wrap;">
+            <a href="https://sangjae4309.github.io/docs-gem5/">
+            <div class="card">
+              <img class="card-img-top" src="/assets/img/project_gem5.gif" alt="gem5 logo" />
+              <div class="card-body">
+                <h5 class="card-title text-lowercase">gem5 documentation</h5>
+                <p class="card-text">Documentize gem5 usages and issues</p>
+                <div class="row ml-1 mr-1 p-0">
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- cs224 -->
+        <div class="project-card", style="flex-wrap: wrap;">
+          <a href="">
+          <div class="card">
+            <img class="card-img-top" src="/assets/img/blog_cs224n_sol.png" />
+            <div class="card-body">
+              <h5 class="card-title text-lowercase">cs224n-solution</h5>
+              <p class="card-text">Studying and solving standford cs224n assignment</p>
+              <div class="row ml-1 mr-1 p-0">
+              </div>
             </div>
           </div>
         </div>
-      </a>
+        <div class="project-card", style="flex-wrap: wrap;">
+          <a href="">
+          <div class="card">
+            <img class="card-img-top" src="/assets/img/blog_cs231n_sol.png" />
+            <div class="card-body">
+              <h5 class="card-title text-lowercase">cs231n-solution</h5>
+              <p class="card-text">Studying and solving standford cs231n assignment</p>
+              <div class="row ml-1 mr-1 p-0">
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-  
-</div>
-
-
+  </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    &copy; Copyright 2024 Anthony Platanios.
-    
-    
+    &copy; Copyright 2025 Sangjae Park.
   </footer>
 
   <!-- Core JavaScript Files -->
@@ -141,42 +131,6 @@
   <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"></script>
   <script src="/assets/js/common.js"></script>
-
-  <!-- GitHub Stars -->
-  <script src="/assets/js/github-stars.js"></script>
-  <script type="text/javascript">
-    
-      
-    
-      
-    
-      
-    
-      
-        
-        githubStars("eaplatanios/symphony-mt", function(stars) { $("#curriculum-learningeaplatanios-symphony-mt-stars").text('' + stars); });
-      
-    
-      
-        
-        githubStars("eaplatanios/jelly-bean-world", function(stars) { $("#jelly-bean-worldeaplatanios-jelly-bean-world-stars").text('' + stars); });
-      
-    
-      
-        
-        githubStars("eaplatanios/symphony-mt", function(stars) { $("#machine-translationeaplatanios-symphony-mt-stars").text('' + stars); });
-      
-    
-      
-    
-      
-    
-      
-        
-        githubStars("eaplatanios/tensorflow_scala", function(stars) { $("#TensorFlow-Scalaeaplatanios-tensorflow_scala-stars").text('' + stars); });
-      
-    
-  </script>
 
   <!-- Scrolling Progress Bar -->
   <script type="text/javascript">
