@@ -14148,7 +14148,7 @@ progress::-moz-progress-bar { background-color: #003E74; }
 .bibliography li .author a:hover { border-bottom-style: solid; text-decoration: none; }
 .bibliography li .author nobr > em { font-weight: bold; font-style: normal; color: #003E74; }
 
-pre, code { font-family: 'Source Code Pro', monospace; font-weight: normal; font-size: 13px; line-height: 1.3em; }
+pre, code { font-family: 'Source Code Pro', monospace; font-weight: normal; font-size: 13px; line-height: 1.3em; text-align: left;}
 
 /*background color*/
 .hljs { display: block; overflow-x: auto; padding: 0.5em; color: #707880 !important; background: #f7f7f7 !important; border: 1px solid #E3E2E3 !important; border-radius: 2px !important; }
