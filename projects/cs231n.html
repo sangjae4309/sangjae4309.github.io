@@ -48,7 +48,7 @@
     <!-- Index -->
     <div class="content " style="border-bottom: 1px solid #ddd; padding-bottom: 10px;">
       <h3 id="assignment1">Index</h3>
-      <li class=>assignment1
+      <li class=>assignment1F
         <ul style="margin: 0;">
           <li><a href="#knn" id="link">Q1:k-Nearest Neighbor classifier</a></li>
           <li><a href="#softmax" id="link">Q2:Implement a Softmax Classifier</a></li>
@@ -156,7 +156,6 @@
         Please take care to apply proper reshaping, as it is essential to align gradient correctly.
         For example, when tracing the path from the normalized input (shape [N,D]) to the standard deviation (shape [D,1]), you'll need to reduce the dimension by summing over the axis.
         <br><br>
-        <h5>In case of Layer-normalization</h5>
       </div>
       <!-- Q3:CNN -->
       <div class="col-sm-auto pt-3 pb-3 abbr">
@@ -182,6 +181,71 @@
         The illustration above demonstrates how to compute dX for a stride 2 case with 2x2 weight filter.
         Note that the resulting dX will include regions corresponding to the added zero-padding.
         These padded area are not part of the original input and must be explicitly trimmed to be the correct gradient.
+      </div>
+    </div>
+
+    <!-- Assignment2 -->
+    <div class="content ml-1 mr-1 p-0" style="border-bottom: 1px solid #ddd;">
+      <h2>Assignment2</h2> 
+      <!-- Q1:batch-norm -->
+      <div class="col-sm-auto pt-3 pb-3 abbr">
+        <h3 id="batch-norm"> Q1: Batch Normalization</h3>
+        <h5>Getting gradient of gamma and beta </h5>
+        <img class="pt-1 pb-1" src="/assets/img/cs231n/batchnorm-grad-gamma-beta.png" style="width: 100%;">
+        The gradient beta and gamma are simply calculated by summing over the appropriate axis.
+        You can refer to the illustration above using 2x3 input vector.
+        <br><br>
+        <h5>Getting gradient of input</h5>
+        <img class="pt-1 pb-1" src="/assets/img/cs231n/batchnorm-grad-x.png" style="width: 100%;">
+        We need to backpropagate through the entire computational graph.
+        This invloves tracing the full path backward-from the final output, through the normalization step, and back to the original input-while applying the chain rule at each stage.
+        Please take care to apply proper reshaping, as it is essential to align gradient correctly.
+        For example, when tracing the path from the normalized input (shape [N,D]) to the standard deviation (shape [D,1]), you'll need to reduce the dimension by summing over the axis.
+        <br><br>
+      </div>
+      <!-- Q3:CNN -->
+      <div class="col-sm-auto pt-3 pb-3 abbr">
+        <h3 id="cnn">Q3:Convolutional Neural Networks</h3>
+        <h5>im2col (Image to Column) </h5>
+        <img class="pt-1 pb-1" src="/assets/img/cs231n/cnn-im2col.png" style="width: 100%;">
+        We will avoid using explicit loops to implement the sliding of the filter.
+        Instead, we use the im2col tenchnique, which transforms the input vector into a matrix which each row corresponds to a receptive field aligned with the filter's sliding window.
+        While this approach can lead to wastful memory footage-due to duplication-it can significantly accelerate computation by enabling efficient matrix multiplication.
+        Refer to the illustration above, which shows a convolution operation on a 3x3 input with 2x2 filter and stride 1.
+        <br><br>
+        <h5>Getting gradient dW</h5>
+        <img class="pt-1 pb-1" src="/assets/img/cs231n/cnn-dw.png" style="width: 100%;">
+        The gradient with respect to W is computed by convolving the input vector with tge gradient received from the upstrea layer.
+        The upstream gradient acts as the filter, and the stride is fixed to be 1.
+        When it comes to original stride of CNN, that is reflected during the backpropagation by dilating the upstream gradient.
+        Refering to stride-2 case in the illustration above will be helpful to understand.
+        <br><br>
+        <h5>Getting gradient dX</h5>
+        <img class="pt-1 pb-1" src="/assets/img/cs231n/cnn-dx.png" style="width: 70%;"><br>
+        The gradient with respect to input X is similiar excep that the weight acts as filter and dilation is applied to upstream gradient.
+        Addtionally an extra one-pixel zero-padding is added around the upstream gradient.
+        The illustration above demonstrates how to compute dX for a stride 2 case with 2x2 weight filter.
+        Note that the resulting dX will include regions corresponding to the added zero-padding.
+        These padded area are not part of the original input and must be explicitly trimmed to be the correct gradient.
+      </div>
+    </div>
+
+
+
+    <!-- Assignment2 -->
+    <div class="content ml-1 mr-1 p-0" style="border-bottom: 1px solid #ddd;">
+      <h2>Assignment3</h2> 
+      <!-- Q1:trans-former -->
+      <div class="col-sm-auto pt-3 pb-3 abbr">
+        <h3 id="transformer">Q1:Image Captioning with Transformers</h3>
+        <h5>Implementing Multihed Self-Attention Layer </h5>
+        <img class="pt-1 pb-1" src="/assets/img/cs231n/transformer-multihead-attention.png" style="width: 100%;">
+        Multihead self-attention layer is composed of marix-multiplication, but with a few important distinctions.
+        First, it is crucial to apply masking to prevent a token from looking ahead future tokens.
+        For the illustartion above, a mask with the first row [1, inf, inf, inf] ensures that the first token can only refer to itself, not to any future tokens.
+        Second, the target token is reference point for caculating attention scores.
+        In the blue-highlighted box above, the first target token attends to the source tokens with weights [0.1,0.2,0.6,0.1], indicating that the third source token has the strongest influence.
+        <br><br>
       </div>
     </div>
   </div>
