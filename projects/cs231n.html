@@ -232,7 +232,7 @@
 
 
 
-    <!-- Assignment2 -->
+    <!-- Assignment3 -->
     <div class="content ml-1 mr-1 p-0" style="border-bottom: 1px solid #ddd;">
       <h2>Assignment3</h2> 
       <!-- Q1:trans-former -->
@@ -245,6 +245,17 @@
         For the illustartion above, a mask with the first row [1, inf, inf, inf] ensures that the first token can only refer to itself, not to any future tokens.
         Second, the target token is reference point for caculating attention scores.
         In the blue-highlighted box above, the first target token attends to the source tokens with weights [0.1,0.2,0.6,0.1], indicating that the third source token has the strongest influence.
+        <br><br>
+      </div>
+      <!-- Q2:self-supervised -->
+      <div class="col-sm-auto pt-3 pb-3 abbr">
+        <h3 id="self-supervised">Q2:Self-Supervised Learning for Image Classification</h3>
+        <h5>Implementing vectorized SimCLR loss</h5>
+        <img class="pt-1 pb-1" src="/assets/img/cs231n/self-supervised-simclr.png" style="width: 100%;">
+        SimCLR expands each batch from [N,D] to [2N,D] using two augmentations per image.
+        The yellow box indicates one of positive pair.
+        In vectorized form, cosine similarity can be efficiently computed using simple matrix multiplication for denominator of loss and element-wise multiplcation for nomnator.
+        However, don't forget to mask-out in denominator for InfoNCE which exclude score of itself.
         <br><br>
       </div>
     </div>
