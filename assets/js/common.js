@@ -6,3 +6,5 @@ $(document).ready(function() {
         $(this).parent().parent().find(".bibtex.hidden").toggleClass('open');
     });
 });
+
+$('#spanYear').html(new Date().getFullYear());
