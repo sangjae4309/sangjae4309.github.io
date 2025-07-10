@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Sangjae Park</title>
-  <meta name="description" content="Personal website of Sangjae Park.">
+  <title>Sangjae Park | projects</title>
+  <meta name="description" content="Personal website of Anthony Platanios.">
 
   <!-- Fonts and Icons -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons" />
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/assets/css/academicons.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/sjpark.css">
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/projects/">
 
   <!-- Scripts -->
   <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
@@ -23,7 +23,7 @@
 <body>
   <!-- navbar -->
   <script src="/assets/js/nav-bar.js"></script>
-  <script>loadNavbar('/');</script>
+  <script>loadNavbar('/blog/');</script>
   <div id="navbar-placeholder"></div>
   <!-- Scrolling Progress Bar -->
   <progress id="progress" value="0">
@@ -31,39 +31,45 @@
       <span class="progress-bar"></span>
     </div>
   </progress>
-
-  <!-- Content -->
-  <div class="content">
-    <div class="text-center mt-5">
-      <img class="profile-img" src="/assets/img/profile.jpg" />
-    </div>
-    <div class="col mt-4">
-      <h1 class="title text-center font-weight-bold">Sangjae Park</h1>
-      <div class="row mt-3 mb-3">
-        <div class="col">
-          <h6 class="mt-1 text-center text-sm-center" style="font-stretch: ultra-condensed;">
-            SOC RTL Design Engineer<br />
-            Anapss Inc.
-          </h6>
+  <!-- Blog -->
+  <div class="content" style="border-bottom: 1px solid #ddd;">
+    <h1>Blog</h1>
+    <h6>Some of blog posts I've recorded</h6>
+    <div id="projects" class="row mt-2 pt-3" style="overflow: visible !important; position: relative;">
+        <!-- gem5 -->
+        <div class="project-card", style="flex-wrap: wrap;">
+            <!-- <a href="https://sangjae4309.github.io/docs-gem5/"> -->
+            <a href="gem5.html">
+            <div class="card">
+              <img class="card-img-top" src="/assets/img/project_gem5.gif" alt="gem5 logo" />
+              <div class="card-body">
+                <h5 class="card-title text-lowercase">gem5 documentation</h5>
+                <p class="card-text">Documentize gem5 usages and issues</p>
+              </div>
+            </div>
+          </a>
         </div>
-      </div>
+        <!-- cs231n -->
+        <div class="project-card", style="flex-wrap: wrap;">
+            <a href="cs231n.html">
+            <div class="card">
+              <img class="card-img-top" src="/assets/img/blog_cs231n_sol.png" />
+              <div class="card-body">
+                <h5 class="card-title text-lowercase">cs231n-solution</h5>
+                <p class="card-text">Solutions to the standford cs231n assignment (spring 2025)</p>
+              </div>
+            </div>
+          </a>
+        </div>
     </div>
-
-    <!-- Introduction -->
-    <div class="col text-justify p-0">
-    	I am RTL Engineer at <a href="https://www.anapass.com/?act=info.page&pcode=e_main" id="link">Anapass Inc</a>, a semiconductor compnay specilized in OLEDs TCON ASIC chip. This position also fulfills <b>mandatory military service duty</b> required for all Korean male. 
-      <br /><br />
-      I received B.S degree in Electrical and Electronics Engineering and M.S degree in Electical and Computer Engineering 
-      from Sungkyunkwan University. My advisor of Master-degree was 
-      <a href="https://scalable-arch.github.io" id="link"> Jungrae Kim in Scalabe Architecture Lab</a>.
-      <br /><br />
-    </div>
+  </div>
   </div>
 
   <!-- Footer -->
   <footer>
     &copy; Copyright <span id="spanYear"></span> Sangjae Park.
   </footer>
+
   <!-- Core JavaScript Files -->
   <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
   <script src="/assets/js/popper.min.js" type="text/javascript"></script>
@@ -73,7 +79,6 @@
   <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"></script>
   <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/nav-bar.js"></script>
   <script src="/assets/js/scrolling.js"></script>
   <!-- Code Syntax Highlighting -->
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">

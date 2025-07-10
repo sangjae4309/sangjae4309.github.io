@@ -1,0 +1,224 @@
+<style>
+/* --- Sidebar base styles --- */
+#sidebar {
+  position:fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 200px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.16);
+  overflow-y: auto;
+  z-index: 1000;
+}
+#sidebar .sidebar-brand {
+  display: inline-block;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+}
+#sidebar .nav {
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  
+}
+#sidebar .nav-item {
+  width: 100%;
+}
+#sidebar .nav-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-weight: 300;
+  text-decoration: none;
+}
+#sidebar .nav-link:hover,
+#sidebar .nav-item.active .nav-link {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.content {
+  margin-left: 240px; /* Same as #sidebar width */
+  transition: margin-left 0.3s ease;
+}
+
+.navbar-toggler-side{
+  padding: 0.25rem 0.75rem; 
+  font-size: 1.25rem; 
+  line-height: 1; 
+  background-color: transparent; 
+  border: 1px solid transparent; 
+  border-radius: 0.25rem;
+  display:none;
+}
+
+/* --- Responsive (collapse sidebar) --- */
+@media (max-width: 768px) {
+  #sidebar {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    display: block;
+    margin-right: auto; 
+    margin-left: auto; 
+    max-width: 100%;
+  }
+  #sidebar.open {
+    display: block;
+    position: fixed;
+    top: 48px; /* Push below toggle if toggle is at top */
+    width: 100%;
+  }
+  #sidebar ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  #sidebarToggle {
+    display: block;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+  .navbar-toggler-side{
+    padding: 0.25rem 0.75rem; 
+    font-size: 1.25rem; 
+    line-height: 1; 
+    background-color: transparent; 
+    border: 1px solid transparent; 
+    border-radius: 0.25rem;
+    float: right;
+    display: inline;
+  }
+  .navbar-collapse{
+    display: block;
+  }
+}
+
+.nav-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: white;
+  background-color: transparent;
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  position: relative; /* anchor for the arrow */
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item::after {
+  content: '▼';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+  font-size: 12px; /* ← make arrow smaller */
+}
+
+/* Rotate arrow on open */
+.nav-item.open::after {
+  transform: translateY(-50%) rotate(180deg); /* ▼ -> ▲ */
+}
+
+.nav-item:hover {
+  background-color: #3c5a90;
+}
+
+.submenu{
+  display: none;
+}
+.arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.arrow.rotate {
+  transform: rotate(180deg); /* rotates ▼ into ▲ */
+}
+</style>
+
+
+<!-- Sidebar -->
+<nav id="sidebar" class="blue darken-4 navbar-expand-md ">
+  <div class="container-fluid p-0">
+    <a class="navbar-brand title font-weight-lighter white-text pl-3 py-2" href="/"><span class="font-weight-bold ">Sangjae</span> Park</a>
+    <button class="navbar-toggler-side navbar-dark ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-left white-text " id="navbarNav">
+      <ul class="nav">
+        <!--1.Running-gem5.-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">1. Running-gem5</button>
+          <div class="submenu pl-3"><a class="nav-link" href="">stdlib</a></div>
+        </li>
+        <!--2.m5-utils-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">2. m5-utils</button>
+          <div class="submenu pl-3"><a class="nav-link" href="">stdlib</a></div>
+        </li>
+        <!--3.Simulator-Core-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">3. Simulator-Core</button>
+        </li>
+        <!--4.CPU-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">4.CPU</button>
+        </li>
+        <!--5.MMU-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">5.MMU</button>
+        </li>
+        <!--6.Cache-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">6.Cache</button>
+        </li>
+        <!--7.Main-Memory-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">7.Main-Memory</button>
+        </li>
+        <!--8.Full-System-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">8.Full-System</button>
+        </li>
+        <!--9.gem5-gpu-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">9.gem5-gpu</button>
+        </li>
+        <!--10.Running-Benchmark-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">10.Run-Benchmark</button>
+        </li>
+        <!--11.gem5-Resources-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">11.gem5-Resources</button>
+          <div class="submenu pl-3">
+            <a class="nav-link" href="">stdlib</a>
+            <a class="nav-link" href="">stdlib</a>
+            <a class="nav-link" href="">stdlib</a>
+            <a class="nav-link" href="">stdlib</a>
+            <a class="nav-link" href="">stdlib</a>
+            <a class="nav-link" href="">stdlib</a>
+            <a class="nav-link" href="">stdlib</a>
+            <a class="nav-link" href="">stdlib</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
