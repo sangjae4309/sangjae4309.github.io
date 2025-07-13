@@ -13993,7 +13993,7 @@ footer { color: #343a40; background-color: #fdfdfd; }
 
 .project-card .card-body { border-top: 1px solid rgba(60, 72, 88, 0.2); }
 
-pre, code { font-family: 'Source Code Pro', monospace; font-weight: normal; font-size: 13px; line-height: 1.3em; text-align: left;}
+pre, code { font-family: 'Source Code Pro', monospace; font-weight: normal; font-size: 12px; line-height: 1.3em; text-align: left;}
 
 /*background color*/
 .hljs { display: block; overflow-x: auto; padding: 0.5em; color: #707880 !important; background: #f7f7f7 !important; border: 1px solid #E3E2E3 !important; border-radius: 2px !important; }

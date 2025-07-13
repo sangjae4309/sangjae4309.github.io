@@ -102,6 +102,7 @@
 
 .nav-item {
   padding: 8px 12px;
+  font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
   color: white;
@@ -137,6 +138,7 @@
 }
 
 .submenu{
+  font-size: 14px;
   display: none;
 }
 .arrow {
@@ -162,58 +164,40 @@
         <!--1.Running-gem5.-->
         <li style="width:100%"> 
           <button onclick="toggleMenu(this)" class="nav-item">1. Running-gem5</button>
-          <div class="submenu pl-3"><a class="nav-link" href="">stdlib</a></div>
-        </li>
-        <!--2.m5-utils-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">2. m5-utils</button>
-          <div class="submenu pl-3"><a class="nav-link" href="">stdlib</a></div>
-        </li>
-        <!--3.Simulator-Core-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">3. Simulator-Core</button>
-        </li>
-        <!--4.CPU-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">4.CPU</button>
-        </li>
-        <!--5.MMU-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">5.MMU</button>
-        </li>
-        <!--6.Cache-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">6.Cache</button>
-        </li>
-        <!--7.Main-Memory-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">7.Main-Memory</button>
-        </li>
-        <!--8.Full-System-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">8.Full-System</button>
-        </li>
-        <!--9.gem5-gpu-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">9.gem5-gpu</button>
-        </li>
-        <!--10.Running-Benchmark-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">10.Run-Benchmark</button>
-        </li>
-        <!--11.gem5-Resources-->
-        <li style="width:100%"> 
-          <button onclick="toggleMenu(this)" class="nav-item">11.gem5-Resources</button>
           <div class="submenu pl-3">
-            <a class="nav-link" href="">stdlib</a>
-            <a class="nav-link" href="">stdlib</a>
-            <a class="nav-link" href="">stdlib</a>
-            <a class="nav-link" href="">stdlib</a>
-            <a class="nav-link" href="">stdlib</a>
-            <a class="nav-link" href="">stdlib</a>
-            <a class="nav-link" href="">stdlib</a>
-            <a class="nav-link" href="">stdlib</a>
+            <a class="nav-link" href="/blog/gem5/1.running-gem5/se-mode.html">Running SE mode</a>
+            <a class="nav-link" href="/blog/gem5/1.running-gem5/full-system.html">Running FS mode</a>
+            <a class="nav-link" href="/blog/gem5/1.running-gem5/m5-util.html">m5-util</a>
           </div>
+          
+        </li>
+        <!--2.CPU-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">2.CPU</button>
+        </li>
+        <!--3.MMU-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">3.MMU</button>
+        </li>
+        <!--4.Cache-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">4.Cache</button>
+        </li>
+        <!--5.Main-Memory-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">5.Main-Memory</button>
+        </li>
+        <!--6.Full-System-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">6.Full-System</button>
+        </li>
+        <!--7.gem5-gpu-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">7.gem5-gpu</button>
+        </li>
+        <!--8.Running-Benchmark-->
+        <li style="width:100%"> 
+          <button onclick="toggleMenu(this)" class="nav-item">8.Run-Benchmark</button>
         </li>
       </ul>
 

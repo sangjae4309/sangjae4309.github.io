@@ -12,3 +12,4 @@ footer { background-color:#003e74; color: white; }
  list-style:disc
 }
 
+.badge-main-color { background-color: #003e74 !important; color: #000 !important; }

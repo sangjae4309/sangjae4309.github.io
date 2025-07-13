@@ -13,6 +13,12 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/sjpark.css">
   <link rel="canonical" href="/">
+  <!-- PrismJS CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+  <!-- PrismJS JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
 </head>
 <body>
   <!-- navbar -->
@@ -22,18 +28,23 @@
   <!-- Content -->
   <div class="content pl-0 pr-0" >
     <!-- Introduction -->
-    <div class="col-sm-auto pt-3 pb-3 abbr">
-      This post presents a detailed walkthrough of a solution to
-      <b>Standford CS231n:Convolutional Neural Networks for Visual Recognition</b> course (Spring 2025).
-      This post is not only to provide working solution code, but to explain the underlying concepts, step by step,
-      so you can build a deeper unerstanding of how and why the solution works.
-      You can find the complete solution code on my github repo &rarr; <a id="link" href="https://github.com/sangjae4309/cs231n-solution">click this link</a>.
+    <div class="col-sm-auto pt-1 pb-2 abbr">
+      <h3>gem5 blog</h3>
+      In the world of computer architecture research and hardware-software co-design, 
+      gem5 has become one of the most widely used simulators for modeling CPUs, memory systems, and full-system behavior. 
+      However, setting up gem5 and making it work reliably for real-world experiments can be tricky, especially for those new to the toolchain.
       <br><br>
-      This post is just about the hard part of the assignment. And please keep in mind that some parts of solution may not be fully correct or understanable.
-      If you spot any mistakes or areas for improvement, feel free to let me know. I'd truly appreciate it.
+      In this blog, I document my hands-on experience using gem5—from installation and configuration to running simulations and debugging common issues. 
+      Along the way, I highlight practical tips, workarounds, and lessons I learned while using gem5 in workflow.
+      Most of contents are based on <a href="https://www.gem5.org/" id="link">gem5 official site</a> and <a href="https://gem5bootcamp.github.io/2024/" id="link">gem5 bootcamp 2024</a>.
+      It'll be very helpful to refer to them.
+      <br><br>
+      <b>This blog is under updating. Part of contenst may not be valid.</b>
     </div>
+  </code></pre>
   
   </div>
+  
 
   <!-- Core JavaScript Files -->
   <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
@@ -47,8 +58,5 @@
   <script src="/assets/js/scrolling.js"></script>
   <!-- Code Syntax Highlighting -->
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-  <script src="/assets/js/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
