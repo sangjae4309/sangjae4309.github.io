@@ -1,0 +1,15 @@
+#link { color: #2a7ae2;}
+#link:hover {  text-decoration: underline; color:rgb(21, 21, 133); transition: all 0.2s ease-in-out;  }
+h1 { color: #003e74 }
+b { color: #003e74 }
+footer { background-color:#003e74; color: white; }
+
+
+.div-max-width-600 {
+    max-width: 600px;
+}
+.col-sm-auto ul li{
+ list-style:disc
+}
+
+.badge-main-color { background-color: #003e74 !important; color: #000 !important; }
