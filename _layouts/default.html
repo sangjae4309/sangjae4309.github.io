@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" }}">
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+
+        {% if site.logo %}
+          <div class="avatar-wrapper">
+            <img src="{{site.logo | relative_url}}" alt="Logo" />
+          </div>
+        {% endif %}
+        <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
+        <p>{{ site.description }}</p>
+        <p> <a href="/files/sangjae_park_cv.pdf" target="_blank">CV</a> | <a href="mailto:park3376@umn.edu" target="_blank">park3376@umn.edu</a> </p> 
+        
+        <p>
+          <a href="https://scholar.google.com/citations?user=6GTDVXwAAAAJ&hl=en" target="_blank">
+    <img src="../files/logo/scholar.png" style="height:25px; width:auto;">&nbsp </a>
+          <a href="https://github.com/sangjae4309" target="_blank">
+    <img src="../files/logo/github.png" style="height:25px; width:auto;">&nbsp </a>
+          <a href="https://www.linkedin.com/in/sangjae4309/" target="_blank">
+    <img src="../files/logo/linkedin.png" style="height:25px; width:auto;">&nbsp </a>
+          <a href="https://sangjae.hashnode.dev/" target="_blank">
+    <img src="../files/logo/hashnode.png" style="height:25px; width:auto;">&nbsp </a>
+        </p>
+
+        <nav class="sidebar-nav" aria-label="Main navigation">
+          <a href="{{ '/publication.html' | relative_url }}">Publication</a>
+          <a href="{{ '/experience.html' | relative_url }}">Experience</a>
+          <a href="{{ '/teaching.html' | relative_url }}">Teaching</a>
+        </nav>
+      </header>
+      <section>
+
+      {{ content }}
+
+      </section>
+       <footer>
+
+       </footer>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  </body>
+</html>
