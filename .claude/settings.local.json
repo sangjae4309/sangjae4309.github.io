@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:skku-compasslab.github.io)"
+      "WebFetch(domain:skku-compasslab.github.io)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "WebFetch(domain:lucylai.com)"
     ]
   }
 }
