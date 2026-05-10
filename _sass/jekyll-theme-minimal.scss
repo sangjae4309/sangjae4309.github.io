@@ -80,7 +80,7 @@ a:hover small {
 }
 
 .wrapper {
-  max-width: 1500px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -289,7 +289,7 @@ footer {
   font-size: 13px;
 }
 
-@media print, screen and (max-width: 960px) {
+@media print, screen and (max-width: 720px) {
 
   div.wrapper {
     width:auto;
@@ -345,7 +345,7 @@ footer {
   }
 }
 
-@media print, screen and (max-width: 720px) {
+@media print, screen and (max-width: 600px) {
   body {
     word-wrap:break-word;
   }
