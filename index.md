@@ -23,7 +23,7 @@ layout: default
         <img src="{{ '/files/logo/umn.png?v=2' | relative_url }}" width="90" height="90" alt="University of Minnesota">
       </div>
       <div class="info-col">
-        <p class="info-title">Ph.D. in Electrical and Computer Engineering, University of Minnesota Twin Cities</p>
+        <p class="info-title">Ph.D. Student in Electrical and Computer Engineering, University of Minnesota Twin Cities</p>
         <p class="info-date">Aug 2026 – Present, Minneapolis, MN</p>
         <p class="info-desc">Advisor: Prof. <a href="https://zhenman.github.io/index.html" target="_blank">Zhenman Fang</a></p>
       </div>
