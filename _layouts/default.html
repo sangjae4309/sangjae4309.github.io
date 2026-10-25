@@ -73,6 +73,9 @@
         var lockAnchor = null;
         var releaseDistance = 48;
         var readingOffset = 120;
+        var displayedIndex = 0;
+        var notchIndex = null;
+        var notchTimer = null;
 
         function sectionTop(section) {
           return section.getBoundingClientRect().top + window.scrollY;
@@ -132,16 +135,38 @@
           return sections[current].id;
         }
 
+        function indexOfId(id) {
+          for (var i = 0; i < sections.length; i++) {
+            if (sections[i].id === id) return i;
+          }
+          return 0;
+        }
+
         function updateActiveNav() {
           if (lockedId) {
             if (lockAnchor == null || Math.abs(window.scrollY - lockAnchor) < releaseDistance) {
+              displayedIndex = indexOfId(lockedId);
               setActive(lockedId);
               return;
             }
             lockedId = null;
             lockAnchor = null;
           }
-          setActive(sectionFromScroll());
+
+          var index = indexOfId(sectionFromScroll());
+          // One wheel gesture should not jump over a section when its slice is
+          // shorter than the gesture, which happens on a tall viewport.
+          if (notchIndex != null && Math.abs(index - notchIndex) > 1) {
+            index = notchIndex + (index > notchIndex ? 1 : -1);
+          }
+          displayedIndex = index;
+          setActive(sections[displayedIndex].id);
+        }
+
+        function rememberNotch() {
+          if (notchIndex == null || displayedIndex !== notchIndex) notchIndex = displayedIndex;
+          clearTimeout(notchTimer);
+          notchTimer = setTimeout(function () { notchIndex = null; }, 320);
         }
 
         function armManualScroll() {
@@ -154,13 +179,25 @@
             if (!document.getElementById(id)) return;
             lockedId = id;
             lockAnchor = null;
+            notchIndex = null;
+            displayedIndex = indexOfId(id);
             setActive(id);
           });
         });
 
         window.addEventListener('scroll', updateActiveNav, { passive: true });
         window.addEventListener('wheel', function (event) {
-          if (event.deltaY) armManualScroll();
+          if (!event.deltaY) return;
+          armManualScroll();
+          if (lockedId || !sections.length) return;
+          rememberNotch();
+          var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          var dir = event.deltaY > 0 ? 1 : -1;
+          var stuck = dir > 0 ? window.scrollY >= maxScroll - 2 : window.scrollY <= 2;
+          if (!stuck) return;
+          var next = Math.max(0, Math.min(sections.length - 1, notchIndex + dir));
+          displayedIndex = next;
+          setActive(sections[displayedIndex].id);
         }, { passive: true });
         window.addEventListener('touchmove', armManualScroll, { passive: true });
         window.addEventListener('keydown', function (event) {
@@ -178,6 +215,7 @@
         var hashId = location.hash.replace(/^#/, '');
         if (hashId && sections.some(function (section) { return section.id === hashId; })) {
           lockedId = hashId;
+          displayedIndex = indexOfId(hashId);
         }
         updateActiveNav();
       });
