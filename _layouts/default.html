@@ -69,28 +69,116 @@
         var sections = navLinks.map(function (link) {
           return document.querySelector(link.getAttribute('href'));
         }).filter(Boolean);
+        var lockedId = null;
+        var lockAnchor = null;
+        var releaseDistance = 48;
+        var readingOffset = 120;
 
-        function updateActiveNav() {
-          var scrollPos = window.scrollY + 120;
-          var currentId = sections.length ? sections[0].id : '';
-          for (var i = 0; i < sections.length; i++) {
-            if (sections[i].offsetTop <= scrollPos) {
-              currentId = sections[i].id;
-            }
-          }
-          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 30 && sections.length) {
-            currentId = sections[sections.length - 1].id;
-          }
+        function sectionTop(section) {
+          return section.getBoundingClientRect().top + window.scrollY;
+        }
+
+        function setActive(id) {
           navLinks.forEach(function (link) {
-            if (link.getAttribute('href') === '#' + currentId) {
-              link.classList.add('active');
+            var isActive = link.getAttribute('href') === '#' + id;
+            link.classList.toggle('active', isActive);
+            if (isActive) {
+              link.setAttribute('aria-current', 'location');
             } else {
-              link.classList.remove('active');
+              link.removeAttribute('aria-current');
             }
           });
         }
 
+        // Headings become active once they reach the reading line. Sections whose
+        // headings can never reach that line still share the remaining scroll range,
+        // so a short page on a tall screen visits every nav item before the bottom.
+        function sectionFromScroll() {
+          if (!sections.length) return '';
+          var scrollY = window.scrollY;
+          var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          if (scrollY <= 8 || maxScroll <= 8) return sections[0].id;
+
+          var ideal = sections.map(function (section) {
+            return Math.max(0, sectionTop(section) - readingOffset);
+          });
+          var pivot = 0;
+          var i;
+          for (i = 0; i < ideal.length; i++) {
+            if (ideal[i] <= maxScroll + 0.5) pivot = i;
+            else break;
+          }
+
+          var points = ideal.slice(0, pivot + 1);
+          var tail = ideal.length - 1 - pivot;
+          if (tail > 0) {
+            var start = points[points.length - 1];
+            var slice = (maxScroll - start) / (tail + 1);
+            // A tall viewport can leave only a sliver of scroll after the last
+            // heading that reaches the reading line. Spread the whole range
+            // across every section so none of them are skipped.
+            if (slice < 72) {
+              var stepAll = maxScroll / sections.length;
+              points = sections.map(function (_, index) { return stepAll * index; });
+            } else {
+              for (var t = 1; t <= tail; t++) points.push(start + slice * t);
+            }
+          }
+
+          var current = 0;
+          for (var j = 0; j < points.length; j++) {
+            if (scrollY + 0.5 >= points[j]) current = j;
+          }
+          return sections[current].id;
+        }
+
+        function updateActiveNav() {
+          if (lockedId) {
+            if (lockAnchor == null || Math.abs(window.scrollY - lockAnchor) < releaseDistance) {
+              setActive(lockedId);
+              return;
+            }
+            lockedId = null;
+            lockAnchor = null;
+          }
+          setActive(sectionFromScroll());
+        }
+
+        function armManualScroll() {
+          if (lockedId && lockAnchor == null) lockAnchor = window.scrollY;
+        }
+
+        navLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+            var id = link.getAttribute('href').slice(1);
+            if (!document.getElementById(id)) return;
+            lockedId = id;
+            lockAnchor = null;
+            setActive(id);
+          });
+        });
+
         window.addEventListener('scroll', updateActiveNav, { passive: true });
+        window.addEventListener('wheel', function (event) {
+          if (event.deltaY) armManualScroll();
+        }, { passive: true });
+        window.addEventListener('touchmove', armManualScroll, { passive: true });
+        window.addEventListener('keydown', function (event) {
+          if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].indexOf(event.key) !== -1) {
+            armManualScroll();
+          }
+        });
+        window.addEventListener('pointerdown', function (event) {
+          var root = document.documentElement;
+          var onScrollbar = event.clientX >= root.clientWidth || event.clientY >= root.clientHeight;
+          if (onScrollbar) armManualScroll();
+        });
+        window.addEventListener('resize', updateActiveNav);
+
+        var hashId = location.hash.replace(/^#/, '');
+        if (hashId && sections.some(function (section) { return section.id === hashId; })) {
+          lockedId = hashId;
+        }
         updateActiveNav();
       });
     </script>
