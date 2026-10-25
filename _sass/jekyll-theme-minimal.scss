@@ -72,6 +72,9 @@ strong {
 .wrapper {
   max-width: 1040px;
   margin: 0 auto;
+  /* Clearfix. Floated header/section/footer would otherwise collapse this box
+     and break sticky positioning plus document-height checks. */
+  display: flow-root;
 }
 
 /* Left Sticky Sidebar */
