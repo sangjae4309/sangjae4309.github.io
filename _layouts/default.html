@@ -9,9 +9,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    
+
 {% seo %}
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" }}">
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | relative_url }}">
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
@@ -19,31 +19,39 @@
   <body>
     <div class="wrapper">
       <header>
-
         {% if site.logo %}
           <div class="avatar-wrapper">
-            <img src="{{site.logo | relative_url}}" alt="Logo" />
+            <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" />
           </div>
         {% endif %}
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
-        <p>{{ site.description }}</p>
-        <p> <a href="/files/sangjae_park_cv.pdf" target="_blank">CV</a> | <a href="mailto:park3376@umn.edu" target="_blank">park3376@umn.edu</a> </p> 
-        
-        <p>
-          <a href="https://scholar.google.com/citations?user=6GTDVXwAAAAJ&hl=en" target="_blank">
-    <img src="../files/logo/scholar.png" style="height:25px; width:auto;">&nbsp </a>
-          <a href="https://github.com/sangjae4309" target="_blank">
-    <img src="../files/logo/github.png" style="height:25px; width:auto;">&nbsp </a>
-          <a href="https://www.linkedin.com/in/sangjae4309/" target="_blank">
-    <img src="../files/logo/linkedin.png" style="height:25px; width:auto;">&nbsp </a>
-          <a href="https://sangjae.hashnode.dev/" target="_blank">
-    <img src="../files/logo/hashnode.png" style="height:25px; width:auto;">&nbsp </a>
+        <h1><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
+        <p class="sidebar-subtitle">{{ site.description }}</p>
+        <p class="sidebar-links">
+          <a href="{{ '/files/sangjae_park_cv.pdf' | relative_url }}" target="_blank">CV</a>
+          <span class="sep">|</span>
+          <a href="mailto:park3376@umn.edu">park3376@umn.edu</a>
         </p>
 
-        <nav class="sidebar-nav" aria-label="Main navigation">
-          <a href="{{ '/publication.html' | relative_url }}">Publication</a>
-          <a href="{{ '/experience.html' | relative_url }}">Experience</a>
-          <a href="{{ '/teaching.html' | relative_url }}">Teaching</a>
+        <p class="social-icons">
+          <a href="https://scholar.google.com/citations?user=6GTDVXwAAAAJ&hl=en" target="_blank" title="Google Scholar">
+            <img src="{{ '/files/logo/scholar.png' | relative_url }}" alt="Google Scholar">
+          </a>
+          <a href="https://github.com/sangjae4309" target="_blank" title="GitHub">
+            <img src="{{ '/files/logo/github.png' | relative_url }}" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/sangjae4309/" target="_blank" title="LinkedIn">
+            <img src="{{ '/files/logo/linkedin.png' | relative_url }}" alt="LinkedIn">
+          </a>
+          <a href="https://sangjae.hashnode.dev/" target="_blank" title="Blog (Hashnode)">
+            <img src="{{ '/files/logo/hashnode.png' | relative_url }}" alt="Hashnode">
+          </a>
+        </p>
+
+        <nav class="sidebar-nav" aria-label="Section navigation">
+          <a href="#about" class="active">About</a>
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
+          <a href="#publications">Publications</a>
         </nav>
       </header>
       <section>
@@ -51,10 +59,40 @@
       {{ content }}
 
       </section>
-       <footer>
-
-       </footer>
+      <footer>
+      </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var navLinks = Array.prototype.slice.call(document.querySelectorAll('.sidebar-nav a[href^="#"]'));
+        var sections = navLinks.map(function (link) {
+          return document.querySelector(link.getAttribute('href'));
+        }).filter(Boolean);
+
+        function updateActiveNav() {
+          var scrollPos = window.scrollY + 120;
+          var currentId = sections.length ? sections[0].id : '';
+          for (var i = 0; i < sections.length; i++) {
+            if (sections[i].offsetTop <= scrollPos) {
+              currentId = sections[i].id;
+            }
+          }
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 30 && sections.length) {
+            currentId = sections[sections.length - 1].id;
+          }
+          navLinks.forEach(function (link) {
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+
+        window.addEventListener('scroll', updateActiveNav, { passive: true });
+        updateActiveNav();
+      });
+    </script>
   </body>
 </html>

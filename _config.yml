@@ -1,6 +1,7 @@
-title: sangjae park
+title: Sangjae Park
 logo: '/files/logo/headshot.png'
 show_downloads: false
-description: PhD Student, FPGA Researcher
-theme: jekyll-theme-minimal
+description: Ph.D. Student in ECE<br>University of Minnesota
 markdown: kramdown
+plugins:
+  - jekyll-seo-tag
