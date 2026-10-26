@@ -9,8 +9,43 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="text/plain" href="{{ '/llms.txt' | relative_url }}" title="LLM & AI Crawler Index">
 
 {% seo %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sangjae Park",
+      "jobTitle": "Ph.D. Student in Electrical and Computer Engineering",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Minnesota Twin Cities"
+      },
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Sungkyunkwan University (SKKU)"
+        }
+      ],
+      "url": "https://sangjae4309.github.io/",
+      "sameAs": [
+        "https://scholar.google.com/citations?user=6GTDVXwAAAAJ&hl=en",
+        "https://github.com/sangjae4309",
+        "https://www.linkedin.com/in/sangjae4309/",
+        "https://sangjae4309.github.io/blog/"
+      ],
+      "knowsAbout": [
+        "FPGA-based AI Accelerators",
+        "High-Level Synthesis (HLS)",
+        "SoC RTL Design",
+        "SystemVerilog",
+        "ASIC Tape-Out",
+        "Display Stream Compression (DSC)",
+        "DRAM Reliability and ECC"
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | relative_url }}">
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -29,6 +64,8 @@
         <p class="sidebar-links">
           <a href="{{ '/files/sangjae_park_cv.pdf' | relative_url }}" target="_blank">CV</a>
           <span class="sep">|</span>
+          <a href="{{ '/blog/' | relative_url }}">Blog</a>
+          <span class="sep">|</span>
           <a href="mailto:park3376@umn.edu">park3376@umn.edu</a>
         </p>
 
@@ -41,9 +78,6 @@
           </a>
           <a href="https://www.linkedin.com/in/sangjae4309/" target="_blank" title="LinkedIn">
             <img src="{{ '/files/logo/linkedin.png' | relative_url }}" alt="LinkedIn">
-          </a>
-          <a href="https://sangjae.hashnode.dev/" target="_blank" title="Blog (Hashnode)">
-            <img src="{{ '/files/logo/hashnode.png' | relative_url }}" alt="Hashnode">
           </a>
         </p>
 

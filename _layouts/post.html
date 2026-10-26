@@ -1,14 +1,280 @@
----
-layout: full
----
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<small>{{ page.date | date: "%-d %B %Y" }}</small>
-<h1>{{ page.title }}</h1>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="text/plain" href="{{ '/llms.txt' | relative_url }}" title="LLM & AI Crawler Index">
 
-<p class="view">by {{ page.author | default: site.author }}</p>
+{% seo %}
 
-{{content}}
+    <!-- AI Answer Engine Optimization (AEO): BlogPosting Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.summary | default: page.excerpt | strip_html | strip_newlines | jsonify }},
+      "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+      "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://sangjae4309.github.io{{ page.url }}"
+      },
+      "keywords": {{ page.tags | join: ", " | jsonify }},
+      "author": {
+        "@type": "Person",
+        "name": "Sangjae Park",
+        "jobTitle": "Ph.D. Student in Electrical and Computer Engineering",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Minnesota Twin Cities"
+        },
+        "url": "https://sangjae4309.github.io/",
+        "sameAs": [
+          "https://scholar.google.com/citations?user=6GTDVXwAAAAJ&hl=en",
+          "https://github.com/sangjae4309",
+          "https://www.linkedin.com/in/sangjae4309/"
+        ]
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Sangjae Park",
+        "url": "https://sangjae4309.github.io/"
+      }
+    }
+    </script>
 
-{% if page.tags %}
-  <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
-{% endif %}
+    {% if page.faq %}
+    <!-- AI Answer Engine Optimization (AEO): FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for item in page.faq %}
+        {
+          "@type": "Question",
+          "name": {{ item.q | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ item.a | jsonify }}
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+    </script>
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | relative_url }}">
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </head>
+  <body class="post-page-body">
+    <!-- Minimal Top Navigation Bar -->
+    <header class="post-top-nav">
+      <div class="post-top-nav-inner">
+        <a href="{{ '/' | relative_url }}" class="brand-name">Sangjae Park</a>
+        <nav class="post-top-links" aria-label="Blog navigation">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <a href="{{ '/blog/' | relative_url }}">Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="post-shell">
+      <!-- Minimal Article Header (date/tags + title only) -->
+      <header class="post-header-minimal">
+        <div class="post-meta-line">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+          <span class="meta-dot">·</span>
+          <span>{{ page.reading_time | default: "7 min read" }}</span>
+          {% if page.tags %}
+          <span class="meta-dot">·</span>
+          <span class="post-tags-inline">
+            {% for tag in page.tags %}
+            <span class="post-tag-pill">{{ tag }}</span>
+            {% endfor %}
+          </span>
+          {% endif %}
+        </div>
+
+        <h1 class="post-main-title">{{ page.title }}</h1>
+      </header>
+
+      <!-- Two-Column Body: TL;DR + Article Content + Minimal Sticky Right TOC -->
+      <div class="post-layout-grid">
+        <main class="post-main-column" id="article-content">
+          {% if page.tldr %}
+          <div class="post-tldr-box" role="note" aria-label="Summary">
+            <div class="tldr-header">TL;DR — Key Takeaways</div>
+            <ul class="tldr-list">
+              {% for point in page.tldr %}
+              <li>{{ point }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          <article class="post-content">
+            {{ content }}
+
+            {% if page.faq %}
+            <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+            <div class="faq-list">
+              {% for item in page.faq %}
+              <div class="faq-card">
+                <h3 id="faq-{{ forloop.index }}" class="faq-question">Q{{ forloop.index }}. {{ item.q }}</h3>
+                <p class="faq-answer">{{ item.a }}</p>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </article>
+
+          <footer class="post-bottom-nav">
+            <a href="{{ '/blog/' | relative_url }}">&larr; All posts</a>
+            <a href="{{ '/' | relative_url }}">Homepage</a>
+          </footer>
+        </main>
+
+        <!-- Minimal Hashnode-Style Sticky Table of Contents Sidebar -->
+        <aside class="post-toc-sidebar" aria-label="On this page navigation">
+          <div class="toc-sticky-box">
+            <div class="toc-header">On this page</div>
+            <nav id="post-toc-nav" class="toc-nav">
+              <!-- Populated dynamically from article h2 & h3 headings -->
+            </nav>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var article = document.querySelector('.post-content');
+        var tocNav = document.getElementById('post-toc-nav');
+        if (!article || !tocNav) return;
+
+        var headings = Array.prototype.slice.call(article.querySelectorAll('h2, h3'));
+        var usedIds = {};
+
+        function slugify(text) {
+          return text
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .trim()
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-');
+        }
+
+        var tocLinks = [];
+        headings.forEach(function (heading, idx) {
+          if (!heading.id) {
+            var base = slugify(heading.textContent) || ('section-' + idx);
+            var candidate = base;
+            var count = 2;
+            while (usedIds[candidate] || document.getElementById(candidate)) {
+              candidate = base + '-' + count;
+              count++;
+            }
+            heading.id = candidate;
+          }
+          usedIds[heading.id] = true;
+
+          var link = document.createElement('a');
+          link.href = '#' + heading.id;
+          link.textContent = heading.textContent;
+          link.className = 'toc-link ' + (heading.tagName.toLowerCase() === 'h3' ? 'toc-h3' : 'toc-h2');
+          link.setAttribute('data-target', heading.id);
+          tocNav.appendChild(link);
+          tocLinks.push(link);
+        });
+
+        var lockedId = null;
+        var unlockTimer = null;
+
+        function setActiveToc(id) {
+          tocLinks.forEach(function (link) {
+            var active = link.getAttribute('data-target') === id;
+            link.classList.toggle('active', active);
+          });
+        }
+
+        function releaseLock() {
+          if (unlockTimer) {
+            clearTimeout(unlockTimer);
+            unlockTimer = null;
+          }
+          lockedId = null;
+        }
+
+        window.addEventListener('wheel', releaseLock, { passive: true });
+        window.addEventListener('touchmove', releaseLock, { passive: true });
+
+        tocLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+            var targetId = link.getAttribute('data-target');
+            lockedId = targetId;
+            setActiveToc(targetId);
+            if (unlockTimer) clearTimeout(unlockTimer);
+            unlockTimer = setTimeout(function () {
+              lockedId = null;
+              unlockTimer = null;
+            }, 1000);
+          });
+        });
+
+        function updateScrollState() {
+          var scrollY = window.scrollY || window.pageYOffset || 0;
+          var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+
+          if (!headings.length) return;
+          if (lockedId) {
+            setActiveToc(lockedId);
+            return;
+          }
+
+          if (scrollY <= 20) {
+            setActiveToc(headings[0].id);
+            return;
+          }
+          if (scrollY >= maxScroll - 12) {
+            setActiveToc(headings[headings.length - 1].id);
+            return;
+          }
+
+          var offsetLine = 110;
+          var currentId = headings[0].id;
+          for (var i = 0; i < headings.length; i++) {
+            var rect = headings[i].getBoundingClientRect();
+            if (rect.top <= offsetLine) {
+              currentId = headings[i].id;
+            } else {
+              break;
+            }
+          }
+          setActiveToc(currentId);
+        }
+
+        window.addEventListener('scroll', updateScrollState, { passive: true });
+        window.addEventListener('resize', updateScrollState, { passive: true });
+        updateScrollState();
+      });
+    </script>
+  </body>
+</html>

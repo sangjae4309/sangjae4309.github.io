@@ -26,7 +26,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: $umn-maroon;
-  margin: 0 0 10px;
+  margin: 0;
   line-height: 1.25;
 }
 
@@ -374,5 +374,488 @@ footer {
 
   .pub-thumb-cell {
     padding: 10px 0 6px;
+  }
+}
+
+/* ==========================================================================
+   Minimal Blog Index (/blog/) & Post Layout (_layouts/post.html)
+   ========================================================================== */
+body.post-page-body {
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  color: #24292f;
+  font: 15px/1.72 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+header.post-top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  float: none;
+  padding: 0;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #eaecef;
+}
+
+.post-top-nav-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: $umn-maroon;
+  letter-spacing: -0.01em;
+}
+
+.brand-name:hover {
+  color: $umn-maroon-dark;
+}
+
+.post-top-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 14px;
+}
+
+.post-top-links a {
+  color: #57606a;
+  font-weight: 400;
+}
+
+.post-top-links a:hover,
+.post-top-links a.active {
+  color: $umn-maroon;
+  font-weight: 700;
+}
+
+/* Minimal Blog Index (/blog/) */
+.blog-index-shell {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 28px 80px;
+}
+
+.blog-index-header {
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid #eaecef;
+}
+
+.blog-index-header h1 {
+  font-size: 26px;
+  color: #1f2328;
+  margin: 0 0 6px;
+}
+
+.blog-index-header p {
+  font-size: 14.5px;
+  color: #57606a;
+  margin: 0;
+}
+
+.blog-index-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.blog-index-item {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f2f4;
+}
+
+.blog-index-item:last-child {
+  border-bottom: 0;
+}
+
+.blog-index-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6e7781;
+  margin-bottom: 6px;
+}
+
+.blog-index-tags {
+  color: $umn-maroon;
+}
+
+.meta-dot {
+  color: #d0d7de;
+}
+
+.blog-index-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  border-bottom: 0;
+  padding-bottom: 0;
+  line-height: 1.35;
+}
+
+.blog-index-title a {
+  color: #1f2328;
+}
+
+.blog-index-title a:hover {
+  color: $umn-maroon;
+}
+
+.blog-index-summary {
+  font-size: 14.2px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Minimal Post Page Shell */
+.post-shell {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 42px 28px 80px;
+}
+
+.post-header-minimal {
+  width: 100%;
+  float: none;
+  position: static;
+  text-align: left;
+  padding: 0 0 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #eaecef;
+}
+
+.post-meta-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #6e7781;
+  margin-bottom: 10px;
+}
+
+.post-tags-inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.post-tag-pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  color: $umn-maroon;
+  background: $umn-maroon-wash;
+}
+
+.post-main-title {
+  font-size: 27px;
+  line-height: 1.28;
+  color: #1f2328;
+  margin: 0;
+  font-weight: 700;
+}
+
+.post-subtitle {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #57606a;
+  margin: 0;
+}
+
+/* Two-Column Grid: Clean Main Column + Minimal Right TOC */
+.post-layout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 248px;
+  gap: 48px;
+  align-items: start;
+}
+
+.post-main-column {
+  min-width: 0;
+}
+
+/* Minimal TL;DR Box */
+.post-tldr-box {
+  background: #fafafa;
+  border-left: 3px solid $umn-maroon;
+  padding: 14px 18px;
+  margin-bottom: 28px;
+}
+
+.tldr-header {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $umn-maroon;
+  margin-bottom: 6px;
+}
+
+.tldr-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.58;
+  color: #333333;
+}
+
+.tldr-list li {
+  margin-bottom: 4px;
+}
+
+.tldr-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Article Typography */
+.post-content h2 {
+  font-size: 20px;
+  color: #1f2328;
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 6px;
+  margin-top: 34px;
+  margin-bottom: 14px;
+  scroll-margin-top: 72px;
+}
+
+.post-content > h2:first-child {
+  margin-top: 0;
+}
+
+.post-content h3 {
+  font-size: 16.5px;
+  color: $umn-maroon;
+  margin-top: 22px;
+  margin-bottom: 8px;
+  scroll-margin-top: 72px;
+}
+
+.post-content p,
+.post-content ul,
+.post-content ol {
+  font-size: 15px;
+  line-height: 1.72;
+  color: #24292f;
+  margin-bottom: 14px;
+}
+
+.post-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  background: #f6f8fa;
+  color: #24292f;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.post-content pre {
+  background: #f6f8fa;
+  color: #24292f;
+  padding: 14px 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 14px 0 18px;
+  border: 1px solid #e5e7eb;
+}
+
+.post-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: 12.8px;
+  line-height: 1.55;
+}
+
+.post-content .highlight {
+  background: #f6f8fa;
+  border-radius: 6px;
+  margin: 14px 0 18px;
+}
+
+.post-content .highlight pre {
+  background: #f6f8fa;
+  color: #24292f;
+  border: 1px solid #e5e7eb;
+  margin: 0;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #eaecef;
+  display: block;
+  margin: 16px auto;
+}
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 22px;
+  font-size: 13.8px;
+}
+
+.post-content table th,
+.post-content table td {
+  border: 1px solid #eaecef;
+  padding: 9px 12px;
+  text-align: left;
+}
+
+.post-content table th {
+  background: #f6f8fa;
+  color: #1f2328;
+  font-weight: 700;
+}
+
+.arch-callout {
+  background: #fafafa;
+  border-left: 3px solid #6e7781;
+  padding: 12px 16px;
+  margin: 16px 0 18px;
+}
+
+.arch-callout-title {
+  font-weight: 700;
+  font-size: 13.8px;
+  color: #1f2328;
+  margin-bottom: 4px;
+}
+
+.arch-callout p {
+  margin: 0;
+  font-size: 13.8px;
+  color: #4b5563;
+}
+
+/* Minimal FAQ Section */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.faq-card {
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f2f4;
+}
+
+.faq-card:last-child {
+  border-bottom: 0;
+}
+
+.faq-card .faq-question {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: #1f2328;
+}
+
+.faq-card .faq-answer {
+  margin: 0;
+  font-size: 14.2px;
+  color: #4b5563;
+  line-height: 1.62;
+}
+
+.post-bottom-nav {
+  width: 100%;
+  float: none;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #eaecef;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+}
+
+/* ==========================================================================
+   Minimal Sticky Right Table of Contents Sidebar (.post-toc-sidebar)
+   ========================================================================== */
+.post-toc-sidebar {
+  position: sticky;
+  top: 76px;
+}
+
+.toc-sticky-box {
+  padding-left: 4px;
+}
+
+.toc-header {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6e7781;
+  margin-bottom: 10px;
+}
+
+.toc-nav {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #eaecef;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+.toc-link {
+  display: block;
+  padding: 5px 10px 5px 12px;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  font-size: 12.8px;
+  line-height: 1.38;
+  color: #6e7781;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+
+.toc-link.toc-h2 {
+  font-weight: 400;
+}
+
+.toc-link.toc-h3 {
+  padding-left: 22px;
+  font-size: 12.2px;
+  color: #8c959f;
+}
+
+.toc-link:hover {
+  color: $umn-maroon;
+}
+
+.toc-link.active {
+  color: $umn-maroon;
+  border-left-color: $umn-maroon;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 900px) {
+  .post-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .post-toc-sidebar {
+    position: static;
+    order: -1;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eaecef;
   }
 }

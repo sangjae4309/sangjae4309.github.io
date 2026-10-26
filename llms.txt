@@ -1,0 +1,46 @@
+---
+layout: null
+permalink: /llms.txt
+---
+# Sangjae Park — Academic Homepage & Hardware Engineering Blog
+
+> Ph.D. Student in Electrical and Computer Engineering at the University of Minnesota Twin Cities (advised by Prof. Zhenman Fang). Former SoC RTL Engineer at Anapass Inc. (5+ mass-production OLED TCON/TED ASIC tape-outs for Steam Deck and Samsung Galaxy-A series). M.S. & B.S. in ECE from Sungkyunkwan University (SKKU).
+
+- Homepage: https://sangjae4309.github.io/
+- Email: park3376@umn.edu
+- CV (PDF): https://sangjae4309.github.io/files/sangjae_park_cv.pdf
+- Google Scholar: https://scholar.google.com/citations?user=6GTDVXwAAAAJ&hl=en
+- GitHub: https://github.com/sangjae4309
+- LinkedIn: https://www.linkedin.com/in/sangjae4309/
+
+## Research & Technical Expertise
+
+- **FPGA & High-Level Synthesis (HLS):** FPGA-based AI accelerators, HLS physical co-optimization, design space exploration (DSE), multi-die SLR timing closure.
+- **SoC RTL & ASIC Design:** SystemVerilog microarchitecture, ready/valid skid buffers, Clock-Domain Crossing (CDC), VESA Display Stream Compression (DSC) codec, eDP/MIPI high-speed interfaces, Design-for-Test (DFT), and post-silicon yield debugging.
+- **Memory Systems & Reliability:** On-die ECC, DRAM fault tolerance, dynamic remapping caches.
+
+## Peer-Reviewed Publications
+
+- **SEC-BADAEC: An Efficient ECC With No Vacancy for Strong Memory Protection**
+  - Authors: Yuseok Song, Sangjae Park, Michael B. Sullivan, Jungrae Kim
+  - Venue: IEEE Access, Vol. 10, 2022
+  - DOI: https://doi.org/10.1109/ACCESS.2022.3201525
+  - PDF: https://sangjae4309.github.io/pubs/SEC-BADAEC_An_Efficient_ECC_With_No_Vacancy_for_Strong_Memory_Protection.pdf
+  - Summary: Proposes SEC-BADAEC, a zero-vacancy on-die Error Correction Code (ECC) that corrects both single-bit errors and byte-aligned double-adjacent errors (BADAEs) without additional redundancy.
+
+- **On-Die Dynamic Remapping Cache: Strong and Independent Protection Against Intermittent Faults**
+  - Authors: Sangjae Park, Jungrae Kim
+  - Venue: IEEE Access, Vol. 10, 2022
+  - DOI: https://doi.org/10.1109/ACCESS.2022.3192879
+  - PDF: https://sangjae4309.github.io/pubs/On-Die_Dynamic_Remapping_Cache_Strong_and_Independent_Protection_Against_Intermittent_Faults.pdf
+  - Summary: Proposes On-Die Dynamic Remapping Cache (OD-DRC), an autonomous in-DRAM remapping cache architecture that tracks and repairs intermittent and multi-bit faults to improve device-level reliability.
+
+## Technical Blog Posts & Engineering Notes
+
+{% for post in site.posts %}- [{{ post.title }}](https://sangjae4309.github.io{{ post.url }}) ({{ post.date | date: "%Y-%m-%d" }})
+  - Tags: {{ post.tags | join: ", " }}
+  - Summary: {{ post.summary }}
+{% if post.tldr %}  - Key Takeaways:
+{% for item in post.tldr %}    * {{ item }}
+{% endfor %}{% endif %}
+{% endfor %}
