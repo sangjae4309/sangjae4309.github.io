@@ -25,7 +25,10 @@ layout: default
       <div class="info-col">
         <p class="info-title">Ph.D. Student in Electrical and Computer Engineering, University of Minnesota Twin Cities</p>
         <p class="info-date">Aug 2026 – Present, Minneapolis, MN</p>
-        <p class="info-desc">Advisor: Prof. <a href="https://zhenman.github.io/index.html" target="_blank">Zhenman Fang</a></p>
+        <p class="info-desc">
+          HiAccel Lab (Advisor: Prof. <a href="https://zhenman.github.io/index.html" target="_blank">Zhenman Fang</a>)<br>
+          <strong>Research Field:</strong> FPGA-based domain specific accelerator, Spiking Neural Network, World-Action Model.
+        </p>
       </div>
     </div>
 
@@ -37,8 +40,10 @@ layout: default
         <p class="info-title">M.S. in Electrical and Computer Engineering, Sungkyunkwan University (SKKU)</p>
         <p class="info-date">Jan 2021 – Jan 2023, Suwon, Korea</p>
         <p class="info-desc">
-          Thesis: <em>On-Die Dynamic Remapping Cache: Strong and Independent Protection Against Intermittent Faults</em> (Advisor: Prof. <a href="https://scalable-arch.github.io/" target="_blank">Jungrae Kim</a>)<br>
-          GPA: 4.44 / 4.5 (= 4.0 / 4.0)
+          Scalable Architecture Lab (Advisor: Prof. <a href="https://scalable-arch.github.io/" target="_blank">Jungrae Kim</a>)<br>
+          <strong>Research Field:</strong> Memory Architecture, DRAM reliability and ECC.<br>
+          <strong>Simulator:</strong> gem5, Ramulator and Faultsim.<br>
+          <strong>Thesis:</strong> "On-Die Dynamic Remapping Cache: Strong and Independent Protection Against Intermittent Faults"
         </p>
       </div>
     </div>
@@ -70,7 +75,7 @@ layout: default
           <li>Served in this position as an alternative to the mandatory military duty required of all Korean males.</li>
           <li>Products: OLED TCON/TED ASICs developed in collaboration with Samsung Display and adopted in major consumer devices such as Steam Deck and Samsung Galaxy-A series (5+ mass-production tape-outs).</li>
           <li>Primary responsibilities centered on DFT, DSC codec, and Gate Pulse I/O, with a working understanding of both eDP and MIPI interfaces.</li>
-          <li>Played a key role in resolving yield-loss issues via post-silicon debugging, working closely with manufacturing teams.</li>
+          <li><strong>EDA Tool:</strong> Design Compiler, SpyGlass, Tessent MemoryBIST, Verdi</li>
         </ul>
       </div>
     </div>
