@@ -27,7 +27,7 @@ layout: default
         <p class="info-date">Aug 2026 – Present, Minneapolis, MN</p>
         <p class="info-desc">
           HiAccel Lab (Advisor: Prof. <a href="https://zhenman.github.io/index.html" target="_blank">Zhenman Fang</a>)<br>
-          <strong>Research Field:</strong> FPGA-based domain specific accelerator, Spiking Neural Network, World-Action Model.
+          Research Field: FPGA-based domain specific accelerator, Spiking Neural Network, World-Action Model.
         </p>
       </div>
     </div>
@@ -41,9 +41,9 @@ layout: default
         <p class="info-date">Jan 2021 – Jan 2023, Suwon, Korea</p>
         <p class="info-desc">
           Scalable Architecture Lab (Advisor: Prof. <a href="https://scalable-arch.github.io/" target="_blank">Jungrae Kim</a>)<br>
-          <strong>Research Field:</strong> Memory Architecture, DRAM reliability and ECC.<br>
-          <strong>Simulator:</strong> gem5, Ramulator and Faultsim.<br>
-          <strong>Thesis:</strong> "On-Die Dynamic Remapping Cache: Strong and Independent Protection Against Intermittent Faults"
+          Research Field: Memory Architecture, DRAM reliability and ECC.<br>
+          Simulator: gem5, Ramulator and Faultsim.<br>
+          Thesis: "On-Die Dynamic Remapping Cache: Strong and Independent Protection Against Intermittent Faults"
         </p>
       </div>
     </div>
@@ -73,9 +73,9 @@ layout: default
         <p class="info-date">Jan 2023 – Jun 2026, Seoul, Korea</p>
         <ul class="info-bullets">
           <li>Served in this position as an alternative to the mandatory military duty required of all Korean males.</li>
+          <li>EDA Tool: Synopsys Design Compiler, SpyGlass, Tessent MemoryBIST, Verdi</li>
           <li>Products: OLED TCON/TED ASICs developed in collaboration with Samsung Display and adopted in major consumer devices such as Steam Deck and Samsung Galaxy-A series (5+ mass-production tape-outs).</li>
           <li>Primary responsibilities centered on DFT, DSC codec, and Gate Pulse I/O, with a working understanding of both eDP and MIPI interfaces.</li>
-          <li><strong>EDA Tool:</strong> Design Compiler, SpyGlass, Tessent MemoryBIST, Verdi</li>
         </ul>
       </div>
     </div>
